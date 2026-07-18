@@ -1,0 +1,17 @@
+# Build folders
+/build/
+/out/
+/debug/
+/release/
+/x64/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+
+# macOS
+.DS_Store
+embeddedGPT_proposal.md
+signal_daemon_proposal.md
