@@ -26,6 +26,8 @@ public:
    * Also for the AST Compiler to validate rules against available fields
    * */
   virtual std::vector<std::string> fields() const = 0;
+
+  virtual std::string description() const = 0;
 };
 
 /* @brief Interface for "Pull" sources, which are polled by the daemon on a schedule
@@ -60,6 +62,9 @@ public:
    * @param cb The callback function to use for pushing events
    * @return true if the source started successfully, false otherwise
    * */
+
+  /*  NOTE : // I Will need to change the return value to: std::expected<void, std::string> cause a bool is fine for now but 2 events might fail for different reasons and I will need to know why in order to  debug/fix it
+   */
   virtual bool start(EventCallback cb) = 0;
 
   /* @brief Stops the push source's internal event generation
