@@ -10,8 +10,10 @@ CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
 compile_commands.json
+docs/
 
 # macOS
 .DS_Store
+.cache/
 embeddedGPT_proposal.md
 signal_daemon_proposal.md

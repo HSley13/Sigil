@@ -1,0 +1,84 @@
+#---------------------------------------------------------------------------
+# Project
+#---------------------------------------------------------------------------
+
+PROJECT_NAME           = "Sigil"
+PROJECT_BRIEF          = "Local-first signal rule engine"
+OUTPUT_DIRECTORY       = docs
+
+#---------------------------------------------------------------------------
+# Input
+#---------------------------------------------------------------------------
+
+INPUT                  = ./src ./include ./docs
+FILE_PATTERNS          = *.cpp *.hpp *.h *.md
+RECURSIVE              = YES
+
+#---------------------------------------------------------------------------
+# Extraction (VERY IMPORTANT for no-comment projects)
+#---------------------------------------------------------------------------
+
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+#---------------------------------------------------------------------------
+# Build Structure & Readability
+#---------------------------------------------------------------------------
+
+FULL_PATH_NAMES        = NO
+STRIP_FROM_PATH        = .
+GENERATE_TREEVIEW      = YES
+INLINE_SOURCES         = YES
+SOURCE_BROWSER         = YES
+
+#---------------------------------------------------------------------------
+# HTML Output
+#---------------------------------------------------------------------------
+
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_COLORSTYLE        = LIGHT
+HTML_DYNAMIC_SECTIONS  = YES
+
+#---------------------------------------------------------------------------
+# Diagrams (BIGGEST UPGRADE)
+#---------------------------------------------------------------------------
+
+HAVE_DOT               = YES
+DOT_IMAGE_FORMAT       = svg
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+UML_LOOK               = YES
+
+#---------------------------------------------------------------------------
+# Member Display
+#---------------------------------------------------------------------------
+
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = YES
+ALWAYS_DETAILED_SEC    = YES
+INLINE_INHERITED_MEMB  = YES
+
+#---------------------------------------------------------------------------
+# Sorting & Clarity
+#---------------------------------------------------------------------------
+
+SORT_MEMBER_DOCS       = YES
+SORT_BRIEF_DOCS        = YES
+SORT_MEMBERS_CTORS_1ST = YES
+
+#---------------------------------------------------------------------------
+# Markdown Support (for docs without code comments)
+#---------------------------------------------------------------------------
+
+MARKDOWN_SUPPORT       = YES
+USE_MDFILE_AS_MAINPAGE = docs/mainpage.md
+
+#---------------------------------------------------------------------------
+# Misc
+#---------------------------------------------------------------------------
+
+QUIET                  = NO
+WARN_IF_UNDOCUMENTED   = NO
+WARN_IF_DOC_ERROR      = YES
