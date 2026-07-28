@@ -6,38 +6,24 @@
 
 namespace sd {
 
-/* ActionRequest: What the rule engine sends to an action plugin
- * When a rule's condition matches, the rule engine builds an ActionRequest
- * and passes it to the appropriate ActionBase plugin for execution
- * */
+// What the rule engine sends to an action plugin when a rule's condition matches.
 struct ActionRequest {
-  // Which action to invoke, it maches the name() of an ActionBase plugin
-  std::string type;
+  std::string type; // matches the name() of the target ActionBase plugin
 
-  /* Static parameters defined in the rule. They are set when the user registers
-   * the rule and don't change and laso are converted by each action plugin to
-   * the appropriate type internally.
-   * */
+  // Static parameters set when the rule is registered; each plugin converts
+  // them to the types it needs internally.
   std::map<std::string, std::string> params;
 
-  // Message template for human-readable output
-  std::string message_template;
+  std::string message_template; // human-readable output, supports {field} substitution
 };
 
-/* ActionBase: Abstract base class for all the action plugins
- * Everything the system can DO is an ActionBase plugin(GPIO, Display, Network,File)
- * */
+// Abstract base for everything the system can DO (GPIO, Display, Network, File).
 class ActionBase {
 public:
   virtual ~ActionBase() = default;
 
-  //  name(): Unique identifier for this action
-  virtual std::string name() const = 0;
-
-  // description(): human-readable description for the LLM system prompt
-  virtual std::string description() const = 0;
-
-  // execute(): Called by the rule engine to perform the action
+  virtual std::string name() const = 0;        // unique identifier for this action
+  virtual std::string description() const = 0; // shown to the LLM in its system prompt
   virtual bool execute(const ActionRequest &req, const SignalEvent &trigger) = 0;
 
   static std::string resolve_template(const std::string &tmpl, const SignalEvent &trigger) {
