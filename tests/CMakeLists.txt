@@ -1,5 +1,10 @@
-add_executable(${PROJECT_NAME}_tests test_main.cpp)
+include(GoogleTest)
+find_package(Threads REQUIRED)
 
-target_link_libraries(${PROJECT_NAME}_tests PRIVATE gtest gtest_main sigil_core)
+add_executable(signal_bus_tests test_signal_bus.cpp)
+target_link_libraries(signal_bus_tests PRIVATE sigil_core Threads::Threads GTest::gtest_main)
+gtest_discover_tests(signal_bus_tests PROPERTIES LABELS "signal_bus")
 
-add_test(NAME basic_test COMMAND ${PROJECT_NAME}_tests)
+add_executable(action_base_tests test_action_base.cpp)
+target_link_libraries(action_base_tests PRIVATE sigil_core GTest::gtest_main)
+gtest_discover_tests(action_base_tests PROPERTIES LABELS "action_base")
