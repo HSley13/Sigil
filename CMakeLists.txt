@@ -2,10 +2,11 @@ cmake_minimum_required(VERSION 4.1.1)
 
 # Project metadata
 project(
-    sigil
-    VERSION 1.0
-    DESCRIPTION "Signal Daemon is a local-first, natural language interface for any signal in the physical world."
-    LANGUAGES CXX)
+  sigil
+  VERSION 1.0
+  DESCRIPTION
+    "Signal Daemon is a local-first, natural language interface for any signal in the physical world."
+  LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
