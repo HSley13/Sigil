@@ -13,3 +13,8 @@ gtest_discover_tests(action_base_tests PROPERTIES LABELS "action_base")
 add_executable(rule_engine_tests rule_engine_tests.cpp)
 target_link_libraries(rule_engine_tests PRIVATE sigil_core GTest::gtest_main)
 gtest_discover_tests(rule_engine_tests PROPERTIES LABELS "rule_engine")
+
+add_executable(mock_sources_tests mock_sources_tests.cpp)
+target_link_libraries(mock_sources_tests PRIVATE sigil_core Threads::Threads
+                                                 GTest::gtest_main)
+gtest_discover_tests(mock_sources_tests PROPERTIES LABELS "mock_sources")
