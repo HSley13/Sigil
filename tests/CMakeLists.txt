@@ -18,3 +18,7 @@ add_executable(mock_sources_tests mock_sources_tests.cpp)
 target_link_libraries(mock_sources_tests PRIVATE sigil_core Threads::Threads
                                                  GTest::gtest_main)
 gtest_discover_tests(mock_sources_tests PROPERTIES LABELS "mock_sources")
+
+add_executable(console_action_tests console_action_tests.cpp)
+target_link_libraries(console_action_tests PRIVATE sigil_core GTest::gtest_main)
+gtest_discover_tests(console_action_tests PROPERTIES LABELS "console_action")
