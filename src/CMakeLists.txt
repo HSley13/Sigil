@@ -4,3 +4,8 @@ target_include_directories(sigil_core INTERFACE ${PROJECT_SOURCE_DIR}/include/da
 
 target_link_libraries(sigil_core INTERFACE nlohmann_json::nlohmann_json)
 
+find_package(Threads REQUIRED)
+
+add_executable(sigil main.cpp)
+target_link_libraries(sigil PRIVATE sigil_core Threads::Threads)
+
