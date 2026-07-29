@@ -9,3 +9,7 @@ gtest_discover_tests(signal_bus_tests PROPERTIES LABELS "signal_bus")
 add_executable(action_base_tests action_base_tests.cpp)
 target_link_libraries(action_base_tests PRIVATE sigil_core GTest::gtest_main)
 gtest_discover_tests(action_base_tests PROPERTIES LABELS "action_base")
+
+add_executable(rule_engine_tests rule_engine_tests.cpp)
+target_link_libraries(rule_engine_tests PRIVATE sigil_core GTest::gtest_main)
+gtest_discover_tests(rule_engine_tests PROPERTIES LABELS "rule_engine")
