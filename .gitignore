@@ -18,6 +18,7 @@ docs/html/
 .DS_Store
 .cache/
 .claude/
+CLAUDE.md
 docs/
 signal_daemon_proposal.md
 
