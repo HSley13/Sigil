@@ -11,7 +11,16 @@ CMakeFiles/
 cmake_install.cmake
 compile_commands.json
 
+# Doxygen output (generated into docs/html by Doxyfile)
+docs/html/
+
 # macOS
 .DS_Store
-embeddedGPT_proposal.md
+.cache/
+.claude/
+CLAUDE.md
+docs/
 signal_daemon_proposal.md
+
+# graphify (generated knowledge graph output)
+graphify-out/
