@@ -22,7 +22,7 @@ enum class Op { LessThan,
                 Equals,
                 NotEquals };
 
-// One comparison against one field of one source
+// One comparison against one field of one source.
 struct Condition {
   std::string source_name;
   std::string field_name;
@@ -116,8 +116,9 @@ public:
 
       auto it = _actions.find(rule.action_type);
       if (it == _actions.end()) {
-        continue; // no plugin registered for this action_type -- no dispatch
-                  // for now TODO:
+        // TODO: decide whether an unregistered action_type should log,
+        // reject at rule registration, or stay a silent skip like this.
+        continue;
       }
 
       ActionRequest request{rule.action_type, rule.params, rule.message_template};
