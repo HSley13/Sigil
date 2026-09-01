@@ -46,6 +46,45 @@ LLM-free:
 - An AST layer and LLM integration for natural-language rules
 - A networked/multi-device signal bus (today's is strictly in-process)
 
+## Roadmap — vision-based defect detection
+
+A future source/action pair worth building: a camera source plugin that
+turns Sigil into a small-scale version of an industrial visual-inspection
+system (catching manufacturing defects on-device, in real time, no cloud).
+It's a natural fit for the existing architecture — one more `SourceBase`
+plugin — and it's a good excuse to stress-test the pipeline against a
+noisier, higher-throughput signal than the mock sources.
+
+**Scope**
+
+1. `CameraDefectSource` (source plugin) — reads frames from a Pi Camera
+   Module, runs a lightweight anomaly-detection model locally, and emits a
+   `SignalEvent` (field: `defect_score` or `defect_type`) when a frame
+   deviates from the "known good" baseline.
+2. Synthetic defect generation for training — instead of hand-labeling
+   defective parts, take a handful of photos of a known-good part and
+   synthetically composite scratches/dents/discoloration onto them
+   (OpenCV) to generate negative examples. Train the anomaly detector on
+   that synthetic set.
+3. Wire `CameraDefectSource` into the existing `RuleEngine` unmodified —
+   a rule like `defect_score > threshold` fires an `ActionBase` (e.g. a
+   GPIO alert, a log entry, or a new `NotificationAction`) exactly like
+   any other source today.
+4. Keep inference on-device (CPU on the Pi 5 initially; a Hailo-8 AI
+   accelerator HAT is a later option if CPU inference proves too slow for
+   real-time framerates).
+
+**Hardware**
+
+- Pi Camera Module (~$25–35)
+- Optional later: Hailo-8 AI accelerator HAT (~$70) for faster inference
+
+**Explicitly out of scope for a first pass:** production-grade throughput,
+multi-camera synchronization, and dimension measuring / character reading —
+this is meant to prove the pipeline pattern (camera → local inference →
+SignalEvent → rule → action), not compete with a production industrial
+inspection system.
+
 ## Building
 
 Requirements: CMake, a C++20 compiler, and internet access on first
