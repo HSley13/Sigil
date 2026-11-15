@@ -42,6 +42,7 @@ resolved message to stdout).
 
 Not yet started, by design — phase 1 deliberately stays hardware- and
 LLM-free:
+
 - Real source/action plugins (DHT22, ADS-B, GPIO, notifications, ...)
 - An AST layer and LLM integration for natural-language rules
 - A networked/multi-device signal bus (today's is strictly in-process)
